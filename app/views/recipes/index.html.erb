@@ -1,0 +1,15 @@
+-<h1 id="main_title">Easy Recipeasy</h1>
+<h2 id="main_tagline">Welcome back, Alex! Here are some new flavours for you to try:</h1>
+
+<ul id="main_recipes">
+  <% @recipes.each do |recipe| %>
+    <li>
+      <%= recipe.name %>
+      <br>
+      <%= recipe.desc %>
+    </li>
+    <br>
+    <br>
+  <% end %>
+</ul>
+
