@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
-		@user = User.find(1)
+		@user = current_user ? current_user : nil
 	end
 
 	def add_to_favs
@@ -14,5 +14,4 @@ class RecipesController < ApplicationController
 		user.recipes<< recipe unless user.recipes.include?(recipe)
 		redirect_to recipe_path(recipe)
 	end
-
 end

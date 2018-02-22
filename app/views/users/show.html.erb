@@ -1,16 +1,18 @@
 <h1><%= @user.name %></h1>
 <p><%= @user.bio %></p>
 
+<br>
+<h4> Favourites </h4>
 <ul id="main_recipes">
 	<% @user.recipes.each do |recipe| %>
 	<li>
 		<%= link_to recipe.name, recipe_path(recipe) %>
-		<%= link_to "X Delete", delete_from_favs_users_path(user_id:"1", recipe_id:recipe.id), data: { confirm: "Are you sure?" }%>
+		<%= link_to "X Delete", delete_from_favs_users_path(user_id:current_user.id, recipe_id:recipe.id), data: { confirm: "Are you sure?" }%>
 	</li>
 	<br>
 	<br>
 	<% end %>
 </ul>
 
-
+<%= link_to "XX Logout", logout_path, method: :delete%> <br>
 <%= link_to "<< Back to Home", recipes_path %>
