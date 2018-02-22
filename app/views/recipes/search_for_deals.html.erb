@@ -1,0 +1,9 @@
+<h1>Deals for <%= params[:item] %></h1>
+
+<% @img_links.each do |deal| %>
+	<span><%=deal[0]%></span>
+	<a href=<%=deal[1]%>>
+		<img src=<%=deal[2]%> style="max-width: 100px; max-height: 100px">
+	</a>
+<% end %>
+

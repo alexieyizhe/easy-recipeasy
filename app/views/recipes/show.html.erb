@@ -5,10 +5,12 @@
 <p>Calories: <%= @recipe.calories %></p>
 <p>Servings: <%= @recipe.servings %></p>
 <p>From: <%= @recipe.source %></p>
+<% if @recipe.categories %>
 <h5>Categories:</h5>
-<% @recipe.categories.each do |cat| %>
-	<span><%= cat %>, </span>
-<% end %> <br>
+	<% @recipe.categories.each do |cat| %>
+		<span><%= cat %>, </span>
+	<% end %> <br>
+<% end %>
 
 
 <h4>Ingredients:</h4>

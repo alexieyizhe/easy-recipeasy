@@ -29,8 +29,25 @@ class RecipesController < ApplicationController
 
 	def search_for_deals
 		puts "egohwoqhoghoHOhgoHGOIEWhoghoHEIGhogehwhGO"
-		puts params[:item]
-		redirect_to recipes_path
+		
+		Selenium::WebDriver::Chrome.driver_path = "/Users/alexxie/Documents/GitHub/easy-recipeasy/bin/chromedriver"
+
+		options = Selenium::WebDriver::Chrome::Options.new
+		options.add_argument('--headless')
+		driver = Selenium::WebDriver.for :chrome, options: options
+		search_url = "https://www.flipp.com/search?q=#{params[:item]}"
+		driver.navigate.to search_url
+		sleep 3 #allow javascript to load in
+
+		parse_page = Nokogiri::HTML(driver.page_source)
+
+		@img_links = []
+
+		parse_page.css(".item-container").each do |finding|
+			puts "https://www.flipp.com" + finding.css("a").attr("href").to_s
+			puts finding.css(".clipping").attr("src")
+			@img_links << [finding.css("a").attr("href").to_s.split("?")[0][15..-1], ("https://www.flipp.com" + finding.css("a").attr("href").to_s), (finding.css(".clipping").attr("src"))]
+		end
 	end
 
 	def search_for_recipes
