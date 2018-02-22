@@ -1,0 +1,6 @@
+<h1><%= @recipe.name %></h1>
+<p><%= @recipe.desc %></p>
+
+
+<%= link_to "Add to Favourites",  add_to_favs_recipes_path(user_id:@user.id, recipe_id: @recipe.id) %>
+<%= link_to "<< Back to Home", recipes_path %>
