@@ -1,8 +1,12 @@
 <h1 id="main_title">Easy Recipeasy</h1>
-<h2 id="main_tagline">Welcome back, Alex! Here are some new flavours for you to try:</h1>
+<% if current_user %>
+	<h2 id="main_tagline">Welcome back, <%= current_user.name %>! Here are some new flavours for you to try:</h1>
+<% else %>
+	<h2 id="main_tagline"><%= link_to "Log in", login_path %> or check out our new recipes:</h1>
+<% end %>
 <br>
 
-<h3 id="nav_main"><%= link_to "Home", recipes_path %>  <%= link_to "All Users", users_path %> <%= link_to "My Profile", user_path(User.find(1)) %></h3>
+<h3 id="nav_main"><%= link_to "Home", recipes_path %>  <%= link_to "All Users", users_path %> <%= link_to "My Profile", current_user ? user_path(current_user) : login_path %></h3>
 
 <br>
 <br>

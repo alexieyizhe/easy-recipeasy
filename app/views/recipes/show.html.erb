@@ -2,5 +2,15 @@
 <p><%= @recipe.desc %></p>
 
 
-<%= link_to "Add to Favourites",  add_to_favs_recipes_path(user_id:@user.id, recipe_id: @recipe.id) %>
+<%= 
+if @user
+	if @user.recipes.exists?(@recipe.id)
+		link_to "View Your Favourites", user_path(@user)
+	else
+		link_to "Add to Favourites",  add_to_favs_recipes_path(user_id:@user.id, recipe_id: @recipe.id)
+	end
+else
+	link_to "Log in to add to favourites", login_path
+end
+	 %> <br>
 <%= link_to "<< Back to Home", recipes_path %>
