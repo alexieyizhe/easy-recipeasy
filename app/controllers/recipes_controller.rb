@@ -1,6 +1,7 @@
 require 'recipe_api'
 
 class RecipesController < ApplicationController
+	before_action :require_admin, only: [:edit, :destroy]
 	def index
 		@recipes = Recipe.all
 	end
@@ -8,6 +9,15 @@ class RecipesController < ApplicationController
 	def show
 		@recipe = Recipe.find(params[:id])
 		@user = current_user ? current_user : nil
+	end
+
+	def edit
+		@recipes = Recipe.all
+	end
+
+	def destroy
+		Recipe.destroy(params[:id])
+		redirect_to recipes_path
 	end
 
 	def add_to_favs
@@ -34,7 +44,6 @@ class RecipesController < ApplicationController
 		#puts raw_response
 		#check error messages here
 		parsed_recipes = JSON.parse(raw_response.body)
-		puts parsed_recipes["hits"]
 		puts parsed_recipes.length
 		parsed_recipes["hits"].each do |r|
 			puts "START OF RECIPE------------------------------------------------"
@@ -50,7 +59,12 @@ class RecipesController < ApplicationController
 			new_r.likes = 0
 			new_r.servings = r["recipe"]["yield"]
 			new_r.categories = (r["recipe"].key?("dietLabels") and r["recipe"].key?("healthLabels"))? r["recipe"]["dietLabels"] + r["recipe"]["healthLabels"] : []
-			new_r.ingredients = r["recipe"]["ingredients"]
+			all_ingredients = []
+			r["recipe"]["ingredients"].each do |ing|
+				puts ing["text"]
+				all_ingredients << ing["text"]
+			end
+			new_r.ingredients = all_ingredients
 			new_r.img_url = r["recipe"]["image"]
 			new_r.source = r["recipe"].key?("source") ? r["recipe"]["source"] : "Unknown"
 			new_r.orig_url = r["recipe"].key?("url") ? r["recipe"]["url"] : "Unknown"

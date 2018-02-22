@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
+
 	def new
+
 	end
 
 	def create
-		puts "HELLEHGOWHGOEWHGOIHEWOGHEWOGHEWOGHEWOIGHWOGHEOWHGOEWHGEIWHGEIOWGHIOEWHGOIEWHGOIEWHGOIEWHGOIEWHGIOEWHGOEWHGIOEWHGOIEWHGIOEWG" 
+		puts "NEW SESSION ATTEMPT-------------------------------------------------------" 
 		puts params[:session][:email]
 		@user = User.find_by email: params[:session][:email]
 		puts params[:session][:password]

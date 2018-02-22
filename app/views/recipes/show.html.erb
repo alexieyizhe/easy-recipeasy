@@ -1,9 +1,22 @@
 <h1><%= @recipe.name %></h1>
 <p><%= @recipe.desc %></p>
+
+<p><%= link_to "Thumbs Ups: " + @recipe.likes.to_s, recipe_path(@recipe) %></p> <!--not working yet -->
+<p>Calories: <%= @recipe.calories %></p>
+<p>Servings: <%= @recipe.servings %></p>
+<p>From: <%= @recipe.source %></p>
+<h5>Categories:</h5>
+<% @recipe.categories.each do |cat| %>
+	<span><%= cat %>, </span>
+<% end %> <br>
+
+
 <h4>Ingredients:</h4>
 <% @recipe.ingredients.each do |ingr| %>
 	<p><%= link_to ingr, search_for_deals_recipes_path(item:ingr) %></p>
 <% end %> <br>
+
+
 
 <%= 
 if @user
