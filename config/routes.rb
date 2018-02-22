@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 	resources :recipes do
 		collection do
 			get 'add_to_favs'
+			get 'search_for_deals'
+			get 'search_for_recipes'
 		end
 	end
 

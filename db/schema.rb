@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222024343) do
+ActiveRecord::Schema.define(version: 20180222171951) do
 
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20180222024343) do
     t.text "categories"
     t.text "ingredients"
     t.text "directions"
+    t.integer "calories"
+    t.text "img_url"
+    t.text "source"
+    t.text "orig_url"
   end
 
   create_table "recipes_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
