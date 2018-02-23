@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 			get 'add_to_favs'
 			get 'search_for_deals'
 			get 'search_for_recipes'
+			get 'populate_db'
 		end
 	end
 
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 		end
 	end
 
+	root 'landing#index'
 	get '/signup'  => 'users#new' 
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'

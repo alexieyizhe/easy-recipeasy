@@ -1,5 +1,7 @@
 <h1><%= @user.name %></h1>
 <p><%= @user.bio %></p>
+<a href="https://en.gravatar.com/" target="_blank"><%= image_tag @user.gravatar_url %></a>
+<p><%= link_to "edit", edit_user_path(@user) %></p>
 
 <br>
 <h4> Favourites </h4>

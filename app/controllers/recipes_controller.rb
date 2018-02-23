@@ -3,7 +3,7 @@ require 'recipe_api'
 class RecipesController < ApplicationController
 	before_action :require_admin, only: [:edit, :destroy]
 	def index
-		@recipes = Recipe.all
+		@recipes = Recipe.order("RAND()").all #randomize recipes shown on main page!
 	end
 
 	def show
@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
 
 	def destroy
 		Recipe.destroy(params[:id])
+		flash.notice = "The recipe was destroyed."
 		redirect_to recipes_path
 	end
 
@@ -25,6 +26,11 @@ class RecipesController < ApplicationController
 		user = User.find(params[:user_id])
 		user.recipes<< recipe unless user.recipes.include?(recipe)
 		redirect_to recipe_path(recipe)
+	end
+
+	def search_for_recipes
+		@query = params[:search_param]
+		@recipes = Recipe.all.search(@query)
 	end
 
 	def search_for_deals
@@ -50,7 +56,7 @@ class RecipesController < ApplicationController
 		end
 	end
 
-	def search_for_recipes
+	def populate_db
 		puts "egohwoqhoghoHOhgoHGOIEWhoghoHEIGhogehwhGO"
 		puts params[:requested_query]
 		app_key = "a8c2f79449116a1aaae82fa3a64ea49c" #specific to this application

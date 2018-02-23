@@ -1,0 +1,17 @@
+<h1>Recipe Search Results</h1>
+
+
+<p>Found <%= @recipes.size %> results for '<%= @query %>':</p>
+
+<ul id="main_recipes">
+	<% @recipes[0..49].each do |recipe| %> <!-- display only the first 20 random recipes -->
+	<li>
+		<%= link_to recipe.name, recipe_path(recipe) %>
+		<% if current_user and current_user.admin? %>
+			<%= link_to "x delete", recipe_path(recipe), method: :delete, data: {confirm: "Are you sure you want to delete this recipe from the database?"} %>
+		<% end %>
+	</li>
+	<br>
+	<br>
+	<% end %>
+</ul> 
