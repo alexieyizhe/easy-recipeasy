@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: easy-recipeasy_production
-  url: <%= ENV['mysql://ba5b84ee79498d:cef72e8a@us-cdbr-iron-east-05.cleardb.net/heroku_3a804e4daffd1b3?reconnect=true'] %>
+  url: <%= ENV['mysql2://ba5b84ee79498d:cef72e8a@us-cdbr-iron-east-05.cleardb.net/heroku_3a804e4daffd1b3?reconnect=true'] %>
   username: easy-recipeasy
   password: <%= ENV['EASY-RECIPEASY_DATABASE_PASSWORD'] %>
