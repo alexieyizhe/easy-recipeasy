@@ -1,20 +1,105 @@
-<h1><%= @user.name %></h1>
-<p><%= @user.bio %></p>
-<a href="https://en.gravatar.com/" target="_blank"><%= image_tag @user.gravatar_url %></a>
-<p><%= link_to "edit", edit_user_path(@user) %></p>
+<!DOCTYPE html>
+<html >
+<head>
+	<!-- Site made with Mobirise Website Builder v4.6.5, https://mobirise.com -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Mobirise v4.6.5, mobirise.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+	<meta name="description" content="">
+	<title>Home</title>
+	<%= stylesheet_link_tag "css/user-page-style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-grid.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-reboot.min.css" %>
+	<%= stylesheet_link_tag "css/user-dropdown-style.css" %>
+	<%= stylesheet_link_tag "css/additional-user-style.css", :type => "text/css" %>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
-<br>
-<h4> Favourites </h4>
-<ul id="main_recipes">
-	<% @user.recipes.each do |recipe| %>
-	<li>
-		<%= link_to recipe.name, recipe_path(recipe) %>
-		<%= link_to "X Delete", delete_from_favs_users_path(user_id:current_user.id, recipe_id:recipe.id), data: { confirm: "Are you sure?" }%>
-	</li>
-	<br>
-	<br>
-	<% end %>
-</ul>
+</head>
+<body>
+	<%= render "shared/nav-bar" %>
 
-<%= link_to "XX Logout", logout_path, method: :delete%> <br>
-<%= link_to "<< Back to Home", recipes_path %>
+	<section class="engine"><a href="#""></a></section><section class="carousel slide testimonials-slider cid-qKy4q5kW1B" id="testimonials-slider1-i">
+
+
+
+
+
+		<div class="container text-center">
+			<h2 class="pb-5 mbr-fonts-style display-2" style="padding-top:20px">
+				Your Profile
+			</h2>
+			<div class="user col-md-8" style="width:100%; margin-left: auto; margin-right: auto">
+				<div class="user_image">
+					<%= image_tag @user.gravatar_url %>
+				</div>
+				<div class="user_text pb-3">
+					<h2>
+						<%= @user.name %>
+						<%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_user_path(@user) %>
+						<%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, logout_path, method: :delete%> <br>
+					</h2>
+					<p class="mbr-fonts-style display-7">
+						<%- @user.bio %>
+					</p>
+				</div>
+				<div style="margin-bottom: 20px">
+					<div style="float:left">
+						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
+							Role:
+						</div>
+						<div class="user_desk mbr-light mbr-fonts-style display-7">
+							<%= @user.role.to_s.capitalize %>
+						</div>
+					</div>
+					<div style="float:right">
+						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
+							User since:
+						</div>
+						<div class="user_desk mbr-light mbr-fonts-style display-7">
+							<%= @user.created_at %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="features17 cid-qKy4yyWHqe" id="features17-k">
+		<h1 style="padding-left:2%">Favourites</h1>
+		<div class="container-fluid">
+			<div class="media-container-row">
+				<% @user.recipes.each do |recipe| %>
+				<div class="card p-3 col-12 col-md-6 col-lg-2">
+					<div class="card-wrapper">
+						<div class="card-img">
+							<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
+						</div>
+						<div class="card-box">
+							<h4 class="card-title pb-3 mbr-fonts-style display-7">
+								<%= link_to recipe.name, recipe_path(recipe) %>
+							</h4>
+							<p class="mbr-text mbr-fonts-style display-7">
+								<%= link_to "X Delete", delete_from_favs_users_path(user_id:current_user.id, recipe_id:recipe.id), data: { confirm: "Are you sure?" }%>
+							</p>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+		<%= link_to "<< Back to Home", recipes_path %>
+	</section>
+	<%= render "shared/footer" %>
+
+
+	<%= javascript_include_tag "user-js/jquery.min.js"  %>
+	<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
+	<%= javascript_include_tag "user-js/script.js"  %>
+	<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
+
+
+</body>
+</html>

@@ -1,17 +1,100 @@
-<h1>Sign Up</h1>
+<!DOCTYPE HTML>
 
-<%= form_for(@user) do |f| %>  
-	<div class="field"> 
-		<%= f.text_field :name, :placeholder => "Name" %> <br>
-		<%= f.email_field :email, :placeholder => "Email" %> <br>
-		<%= f.password_field :password, :placeholder => "Password" %> <br>
+<html>
 
-		<%= f.text_field :bio, :placeholder => "Introduce Yourself!" %> <br>
-	</div> 
+<head>
 
-	<div class="actions"> 
-		<%= f.submit "Create" %> 
-	</div> 
-<% end %>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<%= link_to "Back", recipes_path %>
+	<meta charset="utf-8">
+
+	<!-- Description, Keywords and Author -->
+
+	<meta name="description" content="">
+
+	<meta name="author" content="">
+
+	
+
+	<title>:: avana LLC | Contact ::</title>
+
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+
+
+	<!-- bootstrap -->
+
+	<%= stylesheet_link_tag "css/style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/responsive.css" %>
+	<%= stylesheet_link_tag "css/font-awesome.min.css" %>
+	<%= stylesheet_link_tag "css/effects/set2.css" %>
+	<%= stylesheet_link_tag "css/effects/normalize.css"  %>
+	<%= stylesheet_link_tag "css/effects/component.css" %>
+	<!--font awesome icons -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+</head>
+
+
+
+<body>
+
+	<%= render "shared/nav-bar" %>
+
+	<!-- main -->
+
+	<main role="main-inner-wrapper" class="container">
+
+		
+
+		<div class="row">
+
+			
+			<div class="contat-from-wrapper">
+				<div id="message"><h1><span>SIGN UP:</span></h1></div>
+
+				<%= form_for(@user, :name => "cform", :id => "cform") do |f| %>  
+					<%= f.text_field :name, :id => "name", :placeholder => "Your Name" %><br>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<%= f.email_field :email, :id => "email", :placeholder => "Your Email" %>
+						</div>
+						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<%= f.password_field :password, :id => "password", :placeholder => "Pick a Password" %> <br>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+						<%= f.text_field :bio, :id => "comments", :name => "comments", :cols => "", :rows => "", :placeholder => "Introduce Yourself!" %> <br>
+					<div class="clearfix"></div>
+						<input name="" type="submit" value="Sign Up">
+					<div id="simple-msg"></div>
+				<% end %>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- main -->
+
+	<!-- footer -->
+
+	<%= render "shared/footer" %>
+
+	<!-- footer -->
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	  <%= javascript_include_tag "js/jquery.min.js"  %>
+	  <%= javascript_include_tag "js/nav.js"  %>
+	  <%= javascript_include_tag "js/custom.js"  %>
+	  <%= javascript_include_tag "js/bootstrap.min.js"  %>
+	  <%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+	  <%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+	  <%= javascript_include_tag "js/effects/classie.js"  %>
+	  <%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+	  <%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+	  <%= javascript_include_tag "js/html5shiv.js"  %>
+
+</body>
+
+</html>

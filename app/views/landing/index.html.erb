@@ -1,3 +1,140 @@
-<h1>Easy Recipeasy</h1>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta charset="utf-8">
+	<!-- Description, Keywords and Author -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>:: avana LLC ::</title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<!-- style -->
+	<%= stylesheet_link_tag "css/user-page-style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-grid.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-reboot.min.css" %>
+	<%= stylesheet_link_tag "css/user-dropdown-style.css" %>
+	<%= stylesheet_link_tag "css/additional-user-style.css", :type => "text/css" %>
+	<%= stylesheet_link_tag "css/style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/responsive.css" %>
+	<%= stylesheet_link_tag "css/font-awesome.min.css" %>
+	<%= stylesheet_link_tag "css/effects/set2.css" %>
+	<%= stylesheet_link_tag "css/effects/normalize.css"  %>
+	<%= stylesheet_link_tag "css/effects/component.css" %>
+	
 
-<h4> <%= link_to "Get Started", recipes_path %> </h4>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<% if current_user and current_user.admin? %>
+		<p style="margin-top:100px">Administrator Mode</p>
+		<h4>Populate Database: </h4>
+		<%= form_tag(populate_db_recipes_path, method: :get, id: "populate-field-admin") do %>
+			<%= text_field_tag :requested_query %>
+			<% submit_tag "Populate Database" %>
+		<% end %>
+		<input type="submit" value="Populate" form="populate-field-admin">
+		<br>
+		<%= link_to "All Users", users_path %>
+	<% end %>
+	<%= render "shared/nav-bar" %>
+	<!-- header -->
+	<!-- main -->
+	<main role="main-home-wrapper" class="container">
+
+		<div class="row">
+
+			<!--<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+				<article role="pge-title-content">
+					<h2><span>Here's some new flavours for you to try:</span>
+					<header>
+						<h2><span>Here's some new flavours for you to try:</span>
+						
+							<h3>
+								<% if current_user %> 
+								Welcome back, <%= current_user.name %>! Here are some new flavours for you to try:
+								<% else %>
+								<%= link_to "Log in", login_path %> or check out our new recipes:
+								<% end %>
+							</h3> 
+						</h2>
+						</header>
+					</article>
+				</section>-->
+				<section class="col-xs-12 grid long" style="margin-top: 85px;  margin-bottom: 20px">	
+					<figcaption>
+						<h2>
+							<% if current_user %> 
+							Welcome back, <span><%= current_user.name %></span>!
+							<% else %>
+							<span><%= link_to "Log in", login_path %> or <%= link_to "sign up", signup_path %> for more features!</span>
+							
+							<% end %></h2>
+							<h3>Check out these new flavours, just for you:</h3>
+							<%= link_to "", current_user ? user_path(current_user) : signup_path %>
+						</figcaption>
+					</section> 
+					<div class="clearfix"></div>
+
+					<!-- Left Row -->
+					<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+						<ul class="grid-lod effect-2" id="grid">
+							<% @recipes[0..4].each do |recipe| %>
+							<li>
+								<figure class="effect-oscar">
+									<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
+									<!--<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %> -->
+									<!--<%=image_tag(food_img, class: 'img-responsive') %>-->
+									<figcaption>
+										<h2><span><%= recipe.name %></span> (NEW!)</h2>
+										<p><%= recipe.desc %></p>
+										<%= link_to recipe.name, recipe_path(recipe) %>
+									</figcaption>
+								</figure>
+							</li>
+							<% end %>
+						</ul>
+					</section>
+
+					<!-- Right Row -->
+					<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+						<ul class="grid-lod effect-2" id="grid">
+							<% @recipes[5..9].each do |recipe| %>
+							<li>
+								<figure class="effect-oscar">
+									<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
+									<figcaption>
+										<h2><span><%= recipe.name %></span> (NEW!)</h2>
+										<p><%= recipe.desc %></p>
+										<%= link_to recipe.name, recipe_path(recipe) %>
+									</figcaption>
+								</figure>
+							</li>
+							<% end %>
+						</ul>
+					</section>
+					<div class="clearfix"></div>
+				</div>
+			</main>
+			<!-- main -->
+			<!-- footer -->
+			<%= render "shared/footer" %>
+			<!-- footer -->
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			<%= javascript_include_tag "js/jquery.min.js"  %>
+			<%= javascript_include_tag "js/nav.js"  %>
+			<%= javascript_include_tag "js/custom.js"  %>
+			<%= javascript_include_tag "js/bootstrap.min.js"  %>
+			<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+			<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+			<%= javascript_include_tag "js/effects/classie.js"  %>
+			<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+			<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+			<%= javascript_include_tag "js/html5shiv.js"  %>
+			<%= javascript_include_tag "user-js/jquery.min.js"  %>
+			<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
+			<%= javascript_include_tag "user-js/script.js"  %>
+			<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
+		</body>
+		</html>

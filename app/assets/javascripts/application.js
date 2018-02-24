@@ -16,3 +16,5 @@
 //= require_tree .
 
 //= require_tree ./js/
+//= require_tree ./user-js/
+//= require_tree ./recipe-js/

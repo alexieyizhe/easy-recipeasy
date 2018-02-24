@@ -1,0 +1,43 @@
+<section class="menu cid-qKy4oqvKRV" once="menu" id="menu2-h">
+		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<div class="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</button>
+			<div class="menu-logo">
+				<div class="navbar-brand">
+					<span class="navbar-logo">
+						<a href="https://mobirise.com">
+							<%= link_to image_tag("rsz_logo.png", id:"navbar-logo"), '/' %>
+						</a>
+					</span>
+
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+					<li class="nav-item">
+						<a class="nav-link link text-black display-4" href="/recipes">
+							<i class="fas fa-utensils" style="font-size:25px; margin-top:5px"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-black display-4" href="#">
+							<% if current_user %>
+								<%= link_to image_tag(current_user.gravatar_url, :style => "max-width: 40px; max-height: 40px; border-width: 4px; border-color: #404040; border-style:solid; border-radius:4px; margin-top:-10px", id: "p"),  user_path(current_user), class: "menu-link" %>
+							<% end %>
+						</a>
+					</li>
+				</ul>
+				<% unless current_user %>
+					<div class="navbar-buttons mbr-section-btn">
+						<%= link_to '<span class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn"></span>Log In'.html_safe, login_path, class: "btn btn-sm btn-primary display-4" %>
+					</div>
+				<% end %>
+			</div>
+		</nav>
+	</section>

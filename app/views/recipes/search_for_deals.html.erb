@@ -1,9 +1,98 @@
-<h1>Deals for <%= params[:item] %></h1>
 
-<% @img_links.each do |deal| %>
-	<span><%=deal[0]%></span>
-	<a href=<%=deal[1]%>>
-		<img src=<%=deal[2]%> style="max-width: 200px; max-height: 200px">
-	</a>
-<% end %>
 
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta charset="utf-8">
+	<!-- Description, Keywords and Author -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>:: avana LLC ::</title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<!-- style -->
+	<%= stylesheet_link_tag "css/user-page-style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-grid.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-reboot.min.css" %>
+	<%= stylesheet_link_tag "css/user-dropdown-style.css" %>
+	<%= stylesheet_link_tag "css/additional-user-style.css", :type => "text/css" %>
+	<%= stylesheet_link_tag "css/style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/responsive.css" %>
+	<%= stylesheet_link_tag "css/font-awesome.min.css" %>
+	<%= stylesheet_link_tag "css/effects/set2.css" %>
+	<%= stylesheet_link_tag "css/effects/normalize.css"  %>
+	<%= stylesheet_link_tag "css/effects/component.css" %>
+	
+
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<%= render "shared/nav-bar" %>
+	<!-- header -->
+	<!-- main -->
+	<main role="main-home-wrapper" class="container">
+
+		<div class="row">
+			<section class="col-xs-12 grid long" style="margin-top: 85px;  margin-bottom: 20px">	
+				<h2> We found these tasty recipe deals matching '<%= params[:item] %>'!</h2>
+				</section> 
+				<div class="clearfix"></div>
+
+				<!-- Left Row -->
+				<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+					<ul class="grid-lod effect-2" id="grid">
+						<% @img_links[0..(@img_links.size / 2)].each do |deal| %>
+						<li>
+							<figure class="effect-oscar">
+								<%=image_tag(deal[2], class: 'img-responsive') %>
+								<figcaption>
+									<h2><span><%= deal[0] %></span></h2>
+									<%= link_to deal[0],  deal[1] %>
+								</figcaption>
+							</figure>
+						</li>
+						<% end %>
+					</ul>
+				</section>
+
+				<!-- Right Row -->
+				<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+					<ul class="grid-lod effect-2" id="grid">
+						<% @img_links[(@img_links.size / 2 + 1)...(@img_links.size)].each do |deal| %>
+						<li>
+							<figure class="effect-oscar">
+								<%=image_tag(deal[2], class: 'img-responsive') %>
+								<figcaption>
+									<h2><span><%= deal[0] %></span></h2>
+									<%= link_to deal[0],  deal[1] %>
+								</figcaption>
+							</figure>
+						</li>
+						<% end %>
+					</ul>
+				</section>
+				<div class="clearfix"></div>
+			</div>
+		</main>
+
+		<%= render "shared/footer" %>
+		<!-- footer -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<%= javascript_include_tag "js/jquery.min.js"  %>
+		<%= javascript_include_tag "js/nav.js"  %>
+		<%= javascript_include_tag "js/custom.js"  %>
+		<%= javascript_include_tag "js/bootstrap.min.js"  %>
+		<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+		<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+		<%= javascript_include_tag "js/effects/classie.js"  %>
+		<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+		<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+		<%= javascript_include_tag "js/html5shiv.js"  %>
+		<%= javascript_include_tag "user-js/jquery.min.js"  %>
+		<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
+		<%= javascript_include_tag "user-js/script.js"  %>
+		<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
+	</body>
+	</html>

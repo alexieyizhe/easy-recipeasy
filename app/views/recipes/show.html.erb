@@ -1,34 +1,99 @@
-<h1><%= @recipe.name %></h1>
-<p><%= @recipe.desc %></p>
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta name="description" content="Recipe Page">
+	<title>Recipe</title>
+	<%= stylesheet_link_tag "css/recipe-page-style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap-grid.min.css" %>
+	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap-reboot.min.css" %>
+	<%= stylesheet_link_tag "css/additional-recipe-style.css", :type => "text/css" %>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<%= render "shared/nav-bar" %>
 
-<p><%= link_to "Users who think this recipe is great: " + @recipe.users.size.to_s, recipe_path(@recipe) %></p> <!--not working yet -->
-<p>Calories: <%= @recipe.calories %></p>
-<p>Servings: <%= @recipe.servings %></p>
-<p>From: <%= @recipe.source %></p>
-<% if @recipe.categories %>
-<h5>Categories:</h5>
-	<% @recipe.categories.each do |cat| %>
-		<span><%= cat %>, </span>
-	<% end %> <br>
-<% end %>
+	<section class="counters1 counters cid-qKxEBp95ZB" id="counters1-t">
+		<div class="container">   
+			<div class="col-md-12">
+				<div class="media-container-row">
+					<div class="mbr-figure" style="width: 50%;">
+						<%= image_tag("home-images/image-steak.jpg", style: 'max-width: 500px; max-height: 900px') %>
+					</div>
+					<div class=" align-left aside-content">
+						<h2 class="mbr-title pt-2 mbr-fonts-style display-2">
+							<%= @recipe.name %>
+							<%= 
+							if @user
+								if @user.recipes.exists?(@recipe.id)
+									link_to '<i class="fas fa-heart"></i></i>'.html_safe, delete_from_favs_users_path(user_id:@user.id, recipe_id: @recipe.id), class: "fav_recipe_true", style: "font-size:0.7em", data: { confirm: "Delete from your favourites?" }
+								else
+									link_to '<i class="far fa-heart"></i>'.html_safe,  add_to_favs_recipes_path(user_id:@user.id, recipe_id: @recipe.id), class: "fav_recipe_false", style: "font-size:0.7em"
+								end
+							else
+								link_to '<i class="far fa-heart"></i>'.html_safe, login_path, class: "fav_recipe_false", style: "font-size:0.7em"
+							end
+							%>
+							<span style="font-size:0.7em; color: #fb5353"><%= @recipe.users.size.to_s %></span>
+						</h2>
+						<div style="float:left;padding-right:10%;min-width: 200px">
+							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+								<%= @recipe.calories %>
+							</h3>
+							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								Calories
+							</h4>
+						</div>
+						<div style="padding-right:10%;min-width: 100px">
+							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+								<%= @recipe.servings %>
+							</h3>
+							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								Servings
+							</h4>
+						</div>
+						<div class="mbr-section-text">
+							<h4 class="mbr-title pt-4 mbr-fonts-style display-5">
+								Ingredients
+							</h4>
+							<ul>
+								<% @recipe.ingredients.each do |ingr| %>
+									<li style="margin-left: 15px"><%= link_to ingr, search_for_deals_recipes_path(item:ingr) %></li>
+								<% end %> 
+							</ul>
+							<% if @recipe.categories %>
+								<h4 class="mbr-title pt-0 mbr-fonts-style display-5">
+									Categories
+								</h4>
+								<% @recipe.categories.each do |cat| %>
+									<span><%= cat %>, </span>
+								<% end %>
+							<% end %>
+							<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="margin-top:10px">
+								Directions
+							</h4>
+							<ol>
+								<li style="margin-left: 15px">Test</li>
+								<li style="margin-left: 15px">Test</li>
+							</ol>
+							<p class="mbr-text mb-5 pt-1 mbr-light mbr-fonts-style display-5">
+								<%= @recipe.desc %>
+							</p>
+							<%= link_to "<< Back to Home", recipes_path %>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>          
+	</section>
+	<%= render "shared/footer" %>
 
-
-<h4>Ingredients:</h4>
-<% @recipe.ingredients.each do |ingr| %>
-	<p><%= link_to ingr, search_for_deals_recipes_path(item:ingr) %></p>
-<% end %> <br>
-
-
-
-<%= 
-if @user
-	if @user.recipes.exists?(@recipe.id)
-		link_to "Item Already In Favs (View)", user_path(@user)
-	else
-		link_to "Add to Favourites",  add_to_favs_recipes_path(user_id:@user.id, recipe_id: @recipe.id)
-	end
-else
-	link_to "Log in to add to favourites", login_path
-end
-	 %> <br>
-<%= link_to "<< Back to Home", recipes_path %>
+	<%= javascript_include_tag "recipe-js/jquery.min.js"  %>
+	<%= javascript_include_tag "recipe-js/bootstrap.min.js"  %>
+	<%= javascript_include_tag "recipe-js/jquery.viewportchecker.js"  %>
+	<%= javascript_include_tag "recipe-js/script.js"  %>
+</body>
+</html>

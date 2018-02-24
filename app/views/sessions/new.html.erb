@@ -1,8 +1,121 @@
+<!DOCTYPE HTML>
 
-<h1>Log in</h1>
+<html>
 
-<%= form_for(:session, url: login_path) do |f| %>
-	<%= f.email_field :email, :placeholder => "Email" %> 
-	<%= f.password_field :password, :placeholder => "Password" %> 
-	<%= f.submit "Log in" %>
-<% end %>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<meta charset="utf-8">
+
+	<!-- Description, Keywords and Author -->
+
+	<meta name="description" content="">
+
+	<meta name="author" content="">
+
+	
+
+	<title>:: avana LLC | Contact ::</title>
+
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+
+
+	<!-- bootstrap -->
+
+	<%= stylesheet_link_tag "css/style.css" %> 
+	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "css/responsive.css" %>
+	<%= stylesheet_link_tag "css/font-awesome.min.css" %>
+	<%= stylesheet_link_tag "css/effects/set2.css" %>
+	<%= stylesheet_link_tag "css/effects/normalize.css"  %>
+	<%= stylesheet_link_tag "css/effects/component.css" %>
+	<!--font awesome icons -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+</head>
+
+
+
+<body>
+
+	
+
+	<!--
+
+	<header role="header">
+
+		<div class="container">
+
+
+			<h2 class="menu">
+				<%= link_to image_tag("rsz_logo.png", id:"profile-pic"), '/' %>
+				<% if current_user %>
+					<%= link_to image_tag(current_user.gravatar_url, :style => "max-width: 25px; max-height: 25px", id: "p"),  user_path(current_user), class: "menu-link" %>
+				<% else %>
+					<%= link_to '<i class="fas fa-user"></i>'.html_safe, current_user ? user_path(current_user) : login_path,  class: "menu-link" %>
+				<% end %>
+				<%= link_to '<i class="fas fa-list-alt"></i>'.html_safe, recipes_path, class: "menu-link" %>
+			</h2>
+
+
+		</div>
+
+	</header> -->
+
+	<!-- header -->
+	<%= render "shared/nav-bar" %>
+	<!-- main -->
+	
+
+	<main role="main-inner-wrapper" class="container">
+
+		
+
+		<div class="row">
+
+			
+			<div class="contat-from-wrapper">
+				<div id="message"><h1><span>LOG IN:</span></h1></div>
+
+				<%= form_for(:session, :url => login_path, :name => "cform", :id => "cform") do |f| %>  
+					<div class="row">
+						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<%= f.email_field :email, :id => "email", :placeholder => "Email" %>
+						</div>
+						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<%= f.password_field :password, :id => "password", :placeholder => "Password" %> <br>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+						<input name="" type="submit" value="Login">
+					<div id="simple-msg"></div>
+				<% end %>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- main -->
+
+	<!-- footer -->
+
+	<%= render "shared/footer" %>
+
+	<!-- footer -->
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	  <%= javascript_include_tag "js/jquery.min.js"  %>
+	  <%= javascript_include_tag "js/nav.js"  %>
+	  <%= javascript_include_tag "js/custom.js"  %>
+	  <%= javascript_include_tag "js/bootstrap.min.js"  %>
+	  <%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+	  <%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+	  <%= javascript_include_tag "js/effects/classie.js"  %>
+	  <%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+	  <%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+	  <%= javascript_include_tag "js/html5shiv.js"  %>
+
+</body>
+
+</html>
