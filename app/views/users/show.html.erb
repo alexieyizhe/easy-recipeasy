@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html >
 <head>
-	<!-- Site made with Mobirise Website Builder v4.6.5, https://mobirise.com -->
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="generator" content="Mobirise v4.6.5, mobirise.com">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
-	<meta name="description" content="">
-	<title>Home</title>
+	<title><%= current_user.name %> - Profile</title>
 	<%= stylesheet_link_tag "css/user-page-style.css" %> 
 	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap.min.css" %>
 	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-grid.min.css" %>
@@ -19,7 +13,6 @@
 
 </head>
 <body>
-	<%= render "shared/nav-bar" %>
 	<% if current_user and current_user.admin? %>
 		<p style="margin-top:100px">Administrator Mode</p>
 		<h4>Populate Database: </h4>
@@ -102,7 +95,6 @@
 		</div>
 		<%= link_to "<< Back to Home", recipes_path %>
 	</section>
-	<%= render "shared/footer" %>
 
 
 	<%= javascript_include_tag "user-js/jquery.min.js"  %>

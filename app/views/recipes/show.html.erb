@@ -5,18 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<meta name="description" content="Recipe Page">
-	<title>Recipe</title>
+	<title><%= @recipe.name%></title>
+
 	<%= stylesheet_link_tag "css/recipe-page-style.css" %> 
 	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap.min.css" %>
 	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap-grid.min.css" %>
 	<%= stylesheet_link_tag "css/bootstrap-recipe-css/bootstrap-reboot.min.css" %>
 	<%= stylesheet_link_tag "css/additional-recipe-style.css", :type => "text/css" %>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 </head>
 <body>
-	<%= render "shared/nav-bar" %>
-
-	<section class="counters1 counters cid-qKxEBp95ZB" id="counters1-t" style="margin-top: 125px">
+	<section class="counters1 counters cid-qKxEBp95ZB" id="counters1-t" style="margin-top: 40px">
 		<div class="container">   
 			<div class="col-md-12">
 				<div class="media-container-row">
@@ -95,18 +95,28 @@
 							</ol>
 							<% end %>
 							<% if @recipe.categories %>
-							<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="font-size:2rem; display: inline">
-								Categories
-							</h4>
-							<% @recipe.categories.each do |cat| %>
-							<span style="font-size:1.5rem">.<%= cat %> </span>
+								<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="font-size:2rem; display: inline">
+									Categories
+								</h4>
+								<% @recipe.categories.each do |cat| %>
+								<span style="font-size:1.5rem">.<%= cat %> </span>
+								<% end %>
 							<% end %>
+
+							<br>
+							<br>
+						
+							<% if current_user and current_user.admin? %>
+								<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="font-size:1.5rem; display: inline">
+									Administrator Options
+								</h4>
+								<span style="font-size:1.5rem">.<%= link_to "delete", recipe_path(@recipe), method: :delete %></span>
 							<% end %>
 							
 							<span style="font-size:2rem">
 								<br>
 								<br>
-								<%= link_to "X delete", recipe_path(@recipe), method: :delete %> <br>
+								<br>
 								<%= link_to "<< Back to Home", '/' %>
 							</span>
 						</div>
@@ -115,7 +125,6 @@
 			</div> 
 		</div>          
 	</section>
-	<%= render "shared/footer" %>
 
 	<%= javascript_include_tag "recipe-js/jquery.min.js"  %>
 	<%= javascript_include_tag "recipe-js/bootstrap.min.js"  %>

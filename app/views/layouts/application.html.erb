@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>EasyRecipeasy</title>
 	<%= csrf_meta_tags %>
-
+	<%= favicon_link_tag 'favicon.ico' %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
+	<script> document.body.className += ' fade-out'; </script>
+	<%= render "shared/nav-bar" %>
 	<p class="flash-notice"><%= flash.notice %></p>
 	<%= yield %>
+	<%= render "shared/footer" %>
+	<script type="text/javascript">
+		window.onload = $('body').removeClass('fade-out');
+		window.onunload = $('body').removeClass('fade-out');
+	</script>
 </body>
+
 </html>

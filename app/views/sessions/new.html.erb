@@ -7,23 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<meta charset="utf-8">
-
-	<!-- Description, Keywords and Author -->
-
-	<meta name="description" content="">
-
-	<meta name="author" content="">
-
-	
-
-	<title>:: avana LLC | Contact ::</title>
-
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
-
+	<title>Log in</title>
 
 	<!-- bootstrap -->
-
 	<%= stylesheet_link_tag "css/style.css" %> 
 	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
 	<%= stylesheet_link_tag "css/responsive.css" %>
@@ -39,54 +25,32 @@
 
 
 <body style="background-color: #ffffff">
-	<%= render "shared/nav-bar" %>
 	<!-- main -->
-	
-
 	<main role="main-inner-wrapper" class="container">
-
-		
-
-		<div class="row">
-
-			
-			<div class="contat-from-wrapper">
-				<div id="message"><h1><span>LOG IN:</span></h1></div>
-				<%= form_for(:session, :url => login_path, :name => "cform", :id => "cform") do |f| %>  
-					<div class="row">
-						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-							<%= f.email_field :email, :id => "email", :placeholder => "Email" %>
-						</div>
-						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-							<%= f.password_field :password, :id => "password", :placeholder => "Password" %> <br>
-						</div>
-						<input name="" type="submit" value="Login">
-					</div>
-				<% end %>
-			</div>
+		<div class="contat-from-wrapper" style="width: 50%; margin-left: auto; margin-right: auto">
+			<div id="message"><h1 style="text-align: center; font-weight: 675"><span>Log in</span></h1></div>
+			<p style="text-align: center">Don't have an account? <%= link_to "Sign up", '/signup' %></p>
+			<hr>
+			<%= form_for(:session, :url => login_path, :name => "cform", :id => "cform") do |f| %>  
+			<%= f.email_field :email, :id => "email", :placeholder => "Email" %><br>
+			<%= f.password_field :password, :id => "password", :cols => "", :rows => "", :placeholder => "Password" %> <br>
+			<p class="flash-notice" style="color: #fb5353"><%= flash.notice %></p>
+			<input name="" type="submit" value="Login">
+			<% end %>
 		</div>
-
 	</main>
 
-	<!-- main -->
-
 	<!-- footer -->
-
-	<%= render "shared/footer" %>
-
-	<!-- footer -->
-	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	  <%= javascript_include_tag "js/jquery.min.js"  %>
-	  <%= javascript_include_tag "js/nav.js"  %>
-	  <%= javascript_include_tag "js/custom.js"  %>
-	  <%= javascript_include_tag "js/bootstrap.min.js"  %>
-	  <%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
-	  <%= javascript_include_tag "js/effects/imagesloaded.js"  %>
-	  <%= javascript_include_tag "js/effects/classie.js"  %>
-	  <%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
-	  <%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
-	  <%= javascript_include_tag "js/html5shiv.js"  %>
+	<%= javascript_include_tag "js/jquery.min.js"  %>
+	<%= javascript_include_tag "js/nav.js"  %>
+	<%= javascript_include_tag "js/custom.js"  %>
+	<%= javascript_include_tag "js/bootstrap.min.js"  %>
+	<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+	<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+	<%= javascript_include_tag "js/effects/classie.js"  %>
+	<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+	<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+	<%= javascript_include_tag "js/html5shiv.js"  %>
 
 </body>
-
 </html>

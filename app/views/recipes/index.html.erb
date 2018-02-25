@@ -7,18 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<meta charset="utf-8">
-
-	<!-- Description, Keywords and Author -->
-
-	<meta name="description" content="">
-
-	<meta name="author" content="">
-
-
-
-	<title>:: avana LLC | Blog ::</title>
-
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<title>All Recipes</title>
 	<!-- bootstrap -->
 
 	<%= stylesheet_link_tag "css/style.css" %> 
@@ -36,15 +25,8 @@
 
 
 
-<body>
-
-	<!-- header -->
-
-	<%= render "shared/nav-bar" %>
-	<!-- header -->
-
+<body style="background-color: #ffffff">
 	<!-- main -->
-
 	<main role="main-inner-wrapper" class="container">
 
 
@@ -71,7 +53,7 @@
 									<span><%= recipe.name.upcase! %></span>
 									<span style="float:right; padding-right: 30px">
 										<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
-										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;
 										<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
 									</span>
 								</article>
@@ -96,7 +78,7 @@
 									<span><%= recipe.name.upcase! %></span>
 									<span style="float:right; padding-right: 30px">
 										<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
-										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;
 										<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
 									</span>
 
@@ -111,10 +93,6 @@
 		</div>
 
 	</main>
-
-	<!-- main -->
-
-	<%= render "shared/footer" %>
 
 
 	 <!-- footer -->

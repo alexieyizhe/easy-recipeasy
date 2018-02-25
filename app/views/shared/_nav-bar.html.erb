@@ -38,6 +38,7 @@ box-shadow: 0px 1px 4px 0px rgba(201,201,201,1)">
 		<% unless current_user %>
 		<div class="navbar-buttons mbr-section-btn">
 			<%= link_to '<span class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn"></span>Log In'.html_safe, login_path, class: "btn btn-sm btn-primary display-4" %>
+			<%= link_to '<span class="btn-icon mbri-mobile mbr-iconfont mbr-iconfont-btn"></span>Sign Up'.html_safe, signup_path, class: "btn btn-sm btn-primary display-4" %>
 		</div>
 		<% end %>
 	</div>

@@ -70,7 +70,7 @@ button, html input[type="button"],/* 1 */ input[type="reset"], input[type="submi
 
 }
 
-body, img,.commentys-form input[type="text"],.commentys-form input[type="email"],.commentys-form input[type="url"],.commentys-form textarea {
+img,.commentys-form input[type="text"],.commentys-form input[type="email"],.commentys-form input[type="url"],.commentys-form textarea {
 
 	transition: all .2s linear;
 
@@ -80,6 +80,15 @@ body, img,.commentys-form input[type="text"],.commentys-form input[type="email"]
 
 	-webkit-transition: all .2s linear;
 
+}
+
+body {
+	opacity: 1;
+	transition: opacity 1s ease-in;
+}
+
+body.fade-out {
+	opacity: 0;
 }
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, input, main {
@@ -322,13 +331,13 @@ article[role="pge-title-content"].contact-header p a:hover{color:#fb5353; text-d
 
 .contat-from-wrapper input[type="text"]:focus,.contat-from-wrapper input[type="email"]:focus,.contat-from-wrapper input[type="password"]:focus,.contat-from-wrapper textarea:focus{ border-bottom-color:#9f9e9e}
 
-.contat-from-wrapper form ::-webkit-input-placeholder { color:#404040; }
+.contat-from-wrapper form ::-webkit-input-placeholder { color:#706f6f; opacity: 0.5;}
 
-.contat-from-wrapper form ::-moz-placeholder { color:#404040; } /* firefox 19+ */
+.contat-from-wrapper form ::-moz-placeholder { color:#706f6f; opacity: 0.5;}/* firefox 19+ */
 
-.contat-from-wrapper form :-ms-input-placeholder { color:#404040; } /* ie */
+.contat-from-wrapper form :-ms-input-placeholder { color:#706f6f; opacity: 0.5;} /* ie */
 
-.contat-from-wrapper form input:-moz-placeholder { color:#404040; }
+.contat-from-wrapper form input:-moz-placeholder { color:#706f6f; opacity: 0.5;}
 
 .contat-from-wrapper textarea{ border-bottom:1px solid #bbbbbb; border-left:none; border-right:none; border-top:none; height:77px; margin-top:56px}
 
