@@ -144,7 +144,7 @@ Recipe.create(name: "Vietnamese Beef Pho",
 	orig_url: "http://www.geniuskitchen.com/recipe/vietnamese-beef-and-rice-noodle-soup-pho-28814")
 
 Recipe.create(name: "Classic Apple Pie",
-	desc: "This apple pie will be sure to win you the "blue ribbon" first prize at the next apple pie contest.",
+	desc: "This apple pie will be sure to win you the blue ribbon first prize at the next apple pie contest.",
 	cooktime: 50,
 	servings: 5,
 	calories: 443,
