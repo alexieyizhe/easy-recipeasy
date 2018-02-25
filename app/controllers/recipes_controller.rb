@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
 	def destroy
 		Recipe.destroy(params[:id])
-		flash.notice = "The recipe was destroyed."
+		flash.notice = "The recipe was deleted from the database."
 		redirect_to recipes_path
 	end
 

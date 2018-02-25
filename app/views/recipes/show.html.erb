@@ -82,6 +82,7 @@
 							<p class="mbr-text mb-5 pt-1 mbr-light mbr-fonts-style display-5">
 								<%= @recipe.desc %>
 							</p>
+							<%= link_to "X delete", recipe_path(@recipe), method: :delete %>
 							<%= link_to "<< Back to Home", recipes_path %>
 						</div>
 					</div>
