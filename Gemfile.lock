@@ -108,7 +108,7 @@ GEM
     multi_xml (0.6.0)
     mysql2 (0.3.19)
     nio4r (2.2.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8)
       mini_portile2 (~> 2.3.0)
     public_suffix (3.0.2)
     puma (3.11.2)
