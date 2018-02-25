@@ -16,15 +16,16 @@
 <body>
 	<%= render "shared/nav-bar" %>
 
-	<section class="counters1 counters cid-qKxEBp95ZB" id="counters1-t">
+	<section class="counters1 counters cid-qKxEBp95ZB" id="counters1-t" style="margin-top: 125px">
 		<div class="container">   
 			<div class="col-md-12">
 				<div class="media-container-row">
-					<div class="mbr-figure" style="width: 50%;">
-						<%= image_tag("home-images/image-steak.jpg", style: 'max-width: 500px; max-height: 900px') %>
+					<div class="mbr-figure" style="width: 100%%; align-self: auto; padding-top:1.5rem!important; margin-left: 1rem!important">
+						<% food_img = @recipe.img_url ? @recipe.img_url : "home-images/image-steak.jpg" %>
+						<%= image_tag(food_img, style: 'max-width: 1000px; max-height: 900px') %>
 					</div>
-					<div class=" align-left aside-content">
-						<h2 class="mbr-title pt-2 mbr-fonts-style display-2">
+					<div class=" align-left aside-content" style="max-width: 50%">
+						<h2 class="mbr-title pt-2 mbr-fonts-style display-2" style="font-size: 5rem">
 							<%= @recipe.name %>
 							<%= 
 							if @user
@@ -44,63 +45,70 @@
 								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
 									<%= @recipe.calories %>
 								</h3>
-								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								<h4 class="mbr-content-title mbr mbr-fonts-style display-7" style="font-size:1.5rem">
 									Calories
 								</h4>
 							</div>
 							<div style="display: table-cell; min-width: 100px">
-								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2" >
 									<%= @recipe.servings %>
 								</h3>
-								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								<h4 class="mbr-content-title mbr mbr-fonts-style display-7" style="font-size:1.5rem">
 									Servings
 								</h4>
 							</div>
 							<div style="display: table-cell; min-width: 100px">
-								<% puts "WOGHWOHGIOWHGOWOGHWORGHOGHOEIHG" %>
-								<% puts @recipe.cooktime %>
 								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
 									<%= @recipe.cooktime %>
 								</h3>
-								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								<h4 class="mbr-content-title mbr mbr-fonts-style display-7" style="font-size:1.5rem">
 									Minutes to Make
 								</h4>
 							</div>
 						</div>
 						<div class="mbr-section-text">
-							<% if @recipe.ingredients %>
-								<h4 class="mbr-title pt-4 mbr-fonts-style display-5">
-									Ingredients
-								</h4>
-								<ul>
-									<% @recipe.ingredients.each do |ingr| %>
-										<li style="margin-left: 15px"><%= link_to ingr.capitalize, search_for_deals_recipes_path(item:ingr) %></li>
-									<% end %> 
-								</ul>
-							<% end %>
-							<% if @recipe.categories %>
-								<h4 class="mbr-title pt-0 mbr-fonts-style display-5">
-									Categories
-								</h4>
-								<% @recipe.categories.each do |cat| %>
-									<span><%= cat %>, </span>
-								<% end %>
-							<% end %>
-							<% if @recipe.directions %>
-								<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="margin-top:10px">
-									Directions
-								</h4>
-								<ol>
-									<% @recipe.directions.each do |dir| %>
-										<li style="margin-left: 15px"><%= dir %></li>
-									<% end %> 
-								</ol>
-							<% end %>
-							<p class="mbr-text mb-5 pt-1 mbr-light mbr-fonts-style display-5">
+							<h4 class="mbr-title pt-2 mbr-fonts-style display-3" style="font-size:3rem; margin-top: 20px">
+								Description
+							</h4>
+							<p class="mbr-text mb-5 pt-1 mbr mbr-fonts-style display-5" style="font-size:1.5rem; line-height: 1.4">
 								<%= @recipe.desc %>
 							</p>
-							<%= link_to "X delete", recipe_path(@recipe), method: :delete %>
-							<%= link_to "<< Back to Home", recipes_path %>
+							<% if @recipe.ingredients %>
+							<h4 class="mbr-title pt-2 mbr-fonts-style display-3" style="font-size:3rem">
+								Ingredients
+							</h4>
+							<ul style="columns: 3; -webkit-columns: 3; -moz-columns:3">
+								<% @recipe.ingredients.each do |ingr| %>
+								<li style="margin-left: 15px; font-size:1.5rem"><%= link_to ingr.capitalize, search_for_deals_recipes_path(item:ingr) %></li>
+								<% end %> 
+							</ul>
+							<% end %>
+							
+							<% if @recipe.directions %>
+							<h4 class="mbr-title pt-0 mbr-fonts-style display-3" style="margin-top:10px; font-size: 3rem">
+								Directions
+							</h4>
+							<ol>
+								<% @recipe.directions.each do |dir| %>
+								<li style="margin-left: 15px; font-size:1.5rem"><%= dir %></li>
+								<% end %> 
+							</ol>
+							<% end %>
+							<% if @recipe.categories %>
+							<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="font-size:2rem; display: inline">
+								Categories
+							</h4>
+							<% @recipe.categories.each do |cat| %>
+							<span style="font-size:1.5rem">.<%= cat %> </span>
+							<% end %>
+							<% end %>
+							
+							<span style="font-size:2rem">
+								<br>
+								<br>
+								<%= link_to "X delete", recipe_path(@recipe), method: :delete %> <br>
+								<%= link_to "<< Back to Home", '/' %>
+							</span>
 						</div>
 					</div>
 				</div>

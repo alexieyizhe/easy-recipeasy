@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 		user = User.find(params[:user_id])
 		recipe = user.recipes.find(params[:recipe_id])
 		user.recipes.delete(recipe) if recipe 
-		redirect_to user_path(user)
+		redirect_to recipe_path(recipe)
 	end
 
 	private

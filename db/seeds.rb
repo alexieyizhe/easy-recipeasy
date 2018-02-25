@@ -46,8 +46,8 @@ Recipe.create(name: "Italian Sausage Pasta",
 	            source: "Ready Set Eat",
 	            orig_url: "https://www.readyseteat.com/recipes-One-Skillet-Italian-Sausage-Pasta-7397")
 
-Recipe.create(name: "Spaghetti and Meatballs",
-	            desc: "Classic Spaghetti and Meatballs - a classic comfort food and pretty much everyone's favorite. This dish with delicious and hearty meatballs in a simple flavorful and tasty tomato sauce served over spaghetti.",
+Recipe.create(name: "Spaghetti & Meatballs",
+	            desc: "Classic Spaghetti and Meatballs - a classic comfort food and pretty much everyone's favorite.",
 	            cooktime: 65,
 	            servings: 4,
 	            calories: 512,
@@ -59,7 +59,7 @@ Recipe.create(name: "Spaghetti and Meatballs",
 	            orig_url: "https://www.foodnetwork.com/recipes/rachael-ray/spaghetti-and-meatballs-recipe-1942620")
 
 Recipe.create(name: "Fish Tacos",
-	desc: "These are loaded with fresh ingredients and perfectly seasoned plump fish. Don’t skip the best fish taco sauce – a garlic lime crema that you will want it on all your tacos! This is our go-to recipe for family get togethers and company because it comes together quickly and it always gets rave reviews.",
+	desc: "These are loaded with fresh ingredients and perfectly seasoned plump fish. This is our go-to recipe for family get togethers and company because it comes together quickly and it always gets rave reviews.",
 	cooktime: 87,
 	servings: 10,
 	calories: 370,
@@ -106,8 +106,8 @@ Recipe.create(name: "Quinoa Salad",
 	source: "Food Network",
 	orig_url: "https://www.foodnetwork.com/recipes/quinoa-salad-recipe0-1946649")
 
-Recipe.create(name: "Jerk Chicken with rice and peas",
-	desc: "Filled with warm, fragrant spices and firey Scotch Bonnet peppers, jerk chicken is one of the tastiest dishes to come off the barbecue. Whether you're planning a Caribbean feast or just want to snack on some spicy wings, fire up the grill and get ready to enjoy some great jerk chicken!",
+Recipe.create(name: "Jerk Chicken",
+	desc: "Filled with warm, fragrant spices and firey Scotch Bonnet peppers, jerk chicken is one of the tastiest dishes to come off the barbecue.",
 	cooktime: 75,
 	servings: 6,
 	calories: 800,
@@ -131,7 +131,7 @@ Recipe.create(name: "Shrimp Pad Thai",
 	orig_url: "https://www.ricardocuisine.com/en/recipes/5667-shrimp-pad-thai")
 
 
-Recipe.create(name: "Vietnamese Beef Pho",
+Recipe.create(name: "Viet Beef Pho",
 	desc: "Who doesn't love noodles soup? In the Vietnamese repertoire, beef pho noodle soup is a classic. In fact, it's practically the national dish of Vietnam.",
 	cooktime: 50,
 	servings: 5,
@@ -191,7 +191,7 @@ Recipe.create(name: "Teriyaki Chicken",
 	source: "All Recipes",
 	orig_url: "http://allrecipes.com/recipe/9023/baked-teriyaki-chicken/")
 
-Recipe.create(name: "Hong Kong Egg Tarts",
+Recipe.create(name: "HK Egg Tarts",
 	desc: "These Cantonese egg tarts are classic pastry in Hong Kong, with buttery, crisp and crumbly tart shell, silky smooth custard inside.",
 	cooktime: 60,
 	servings: 4,

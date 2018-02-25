@@ -38,33 +38,7 @@
 
 
 
-<body>
-
-	
-
-	<!--
-
-	<header role="header">
-
-		<div class="container">
-
-
-			<h2 class="menu">
-				<%= link_to image_tag("rsz_logo.png", id:"profile-pic"), '/' %>
-				<% if current_user %>
-					<%= link_to image_tag(current_user.gravatar_url, :style => "max-width: 25px; max-height: 25px", id: "p"),  user_path(current_user), class: "menu-link" %>
-				<% else %>
-					<%= link_to '<i class="fas fa-user"></i>'.html_safe, current_user ? user_path(current_user) : login_path,  class: "menu-link" %>
-				<% end %>
-				<%= link_to '<i class="fas fa-list-alt"></i>'.html_safe, recipes_path, class: "menu-link" %>
-			</h2>
-
-
-		</div>
-
-	</header> -->
-
-	<!-- header -->
+<body style="background-color: #ffffff">
 	<%= render "shared/nav-bar" %>
 	<!-- main -->
 	
@@ -78,7 +52,6 @@
 			
 			<div class="contat-from-wrapper">
 				<div id="message"><h1><span>LOG IN:</span></h1></div>
-
 				<%= form_for(:session, :url => login_path, :name => "cform", :id => "cform") do |f| %>  
 					<div class="row">
 						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -87,10 +60,8 @@
 						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 							<%= f.password_field :password, :id => "password", :placeholder => "Password" %> <br>
 						</div>
-					</div>
-					<div class="clearfix"></div>
 						<input name="" type="submit" value="Login">
-					<div id="simple-msg"></div>
+					</div>
 				<% end %>
 			</div>
 		</div>

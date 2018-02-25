@@ -20,7 +20,17 @@
 </head>
 <body>
 	<%= render "shared/nav-bar" %>
-
+	<% if current_user and current_user.admin? %>
+		<p style="margin-top:100px">Administrator Mode</p>
+		<h4>Populate Database: </h4>
+		<%= form_tag(populate_db_recipes_path, method: :get, id: "populate-field-admin") do %>
+			<%= text_field_tag :requested_query %>
+			<% submit_tag "Populate Database" %>
+		<% end %>
+		<input type="submit" value="Populate" form="populate-field-admin">
+		<br>
+		<%= link_to "All Users", users_path %>
+	<% end %>
 	<section class="engine"><a href="#""></a></section><section class="carousel slide testimonials-slider cid-qKy4q5kW1B" id="testimonials-slider1-i">
 
 

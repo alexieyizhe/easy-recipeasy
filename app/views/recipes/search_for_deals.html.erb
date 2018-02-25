@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE HTML>
+
 <html>
+
 <head>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
 	<meta charset="utf-8">
+
 	<!-- Description, Keywords and Author -->
+
 	<meta name="description" content="">
+
 	<meta name="author" content="">
-	<title>:: avana LLC ::</title>
+
+
+
+	<title>:: avana LLC | Blog ::</title>
+
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-	<!-- style -->
-	<%= stylesheet_link_tag "css/user-page-style.css" %> 
-	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap.min.css" %>
-	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-grid.min.css" %>
-	<%= stylesheet_link_tag "css/bootstrap-user-css/bootstrap-reboot.min.css" %>
-	<%= stylesheet_link_tag "css/user-dropdown-style.css" %>
-	<%= stylesheet_link_tag "css/additional-user-style.css", :type => "text/css" %>
+	<!-- bootstrap -->
+
 	<%= stylesheet_link_tag "css/style.css" %> 
 	<%= stylesheet_link_tag "css/bootstrap.min.css" %>
 	<%= stylesheet_link_tag "css/responsive.css" %>
@@ -24,75 +28,87 @@
 	<%= stylesheet_link_tag "css/effects/set2.css" %>
 	<%= stylesheet_link_tag "css/effects/normalize.css"  %>
 	<%= stylesheet_link_tag "css/effects/component.css" %>
-	
 
+	<!--font awesome icons -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 </head>
-<body>
+
+
+
+<body style="background-color: white">
+
+	<!-- header -->
+
 	<%= render "shared/nav-bar" %>
 	<!-- header -->
+
 	<!-- main -->
-	<main role="main-home-wrapper" class="container">
 
+	<main role="main-inner-wrapper" class="container" style="margin-top: 125px">
+
+
+		<h2> We found these tasty recipe deals matching '<%= params[:item] %>'!</h2>
+		<div class="contat-from-wrapper">
+			<%= form_tag(search_for_deals_recipes_path, method: :get, id: "search-db-field") do %>
+			<%= text_field_tag :item, nil, placeholder: "Find Another Deal", style: "margin-left:-7%; max-width:80%; float:left" %>
+			<%= submit_tag "Search", style: "margin-right:-69px; margin-top:-40px; margin-bottom:20px" %>
+			<% end %>
+			
+		</div>
 		<div class="row">
-			<section class="col-xs-12 grid long" style="margin-top: 85px;  margin-bottom: 20px">	
-				<h2> We found these tasty recipe deals matching '<%= params[:item] %>'!</h2>
-				</section> 
-				<div class="clearfix"></div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+				<ul class="grid-lod effect-2" id="grid">
+					<% @img_links[0..(@img_links.size / 2)].each do |deal| %>
+					<li>
+						<section class="blog-content">
+							<%= link_to ('<figure>' + image_tag(deal[2], class: 'img-responsive') + '</figure>').html_safe, deal[1], target: "_blank" %>
+							<article>
+								<span><%= deal[0] %></span>
 
-				<!-- Left Row -->
-				<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-					<ul class="grid-lod effect-2" id="grid">
-						<% @img_links[0..(@img_links.size / 2)].each do |deal| %>
-						<li>
-							<figure class="effect-oscar">
-								<%=image_tag(deal[2], class: 'img-responsive') %>
-								<figcaption>
-									<h2><span><%= deal[0] %></span></h2>
-									<%= link_to deal[0],  deal[1] %>
-								</figcaption>
-							</figure>
-						</li>
-						<% end %>
-					</ul>
-				</section>
+							</article>
+						</section>
+					</li>
+					<% end %>
+				</ul>
 
-				<!-- Right Row -->
-				<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-					<ul class="grid-lod effect-2" id="grid">
-						<% @img_links[(@img_links.size / 2 + 1)...(@img_links.size)].each do |deal| %>
-						<li>
-							<figure class="effect-oscar">
-								<%=image_tag(deal[2], class: 'img-responsive') %>
-								<figcaption>
-									<h2><span><%= deal[0] %></span></h2>
-									<%= link_to deal[0],  deal[1] %>
-								</figcaption>
-							</figure>
-						</li>
-						<% end %>
-					</ul>
-				</section>
-				<div class="clearfix"></div>
 			</div>
-		</main>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+				<ul class="grid-lod effect-2" id="grid">
+					<% @img_links[(@img_links.size / 2 + 1)...(@img_links.size)].each do |deal| %>
+					<li>
+						<section class="blog-content">
+							<%= link_to ('<figure>' + image_tag(deal[2], class: 'img-responsive') + '</figure>').html_safe, deal[1], target: "_blank" %>
+							<article>
+								<span><%= deal[0] %></span>
 
-		<%= render "shared/footer" %>
-		<!-- footer -->
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<%= javascript_include_tag "js/jquery.min.js"  %>
-		<%= javascript_include_tag "js/nav.js"  %>
-		<%= javascript_include_tag "js/custom.js"  %>
-		<%= javascript_include_tag "js/bootstrap.min.js"  %>
-		<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
-		<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
-		<%= javascript_include_tag "js/effects/classie.js"  %>
-		<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
-		<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
-		<%= javascript_include_tag "js/html5shiv.js"  %>
-		<%= javascript_include_tag "user-js/jquery.min.js"  %>
-		<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
-		<%= javascript_include_tag "user-js/script.js"  %>
-		<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
-	</body>
-	</html>
+							</article>
+						</section>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</main>
+
+
+
+
+	<%= render "shared/footer" %>
+
+
+	<!-- footer -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<%= javascript_include_tag "js/jquery.min.js"  %>
+	<%= javascript_include_tag "js/nav.js"  %>
+	<%= javascript_include_tag "js/custom.js"  %>
+	<%= javascript_include_tag "js/bootstrap.min.js"  %>
+	<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+	<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+	<%= javascript_include_tag "js/effects/classie.js"  %>
+	<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+	<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+	<%= javascript_include_tag "js/html5shiv.js"  %>
+
+</body>
+</html>

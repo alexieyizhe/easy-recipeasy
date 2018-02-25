@@ -61,19 +61,6 @@
 
 
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-
-				<!--<article role="pge-title-content" class="blog-header">
-
-					<header>
-
-						<h2><span>News</span> Updates from studio</h2>
-
-					</header>
-
-					<p>Get all information about our studio from latest news posts & updates page.</p>
-
-				</article>-->
-
 				<ul class="grid-lod effect-2" id="grid">
 					<% @recipes[0..(@recipes.size / 2)].each do |recipe| %>
 						<li>
@@ -82,7 +69,11 @@
 								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
-									<p><%= recipe.desc %></p>
+									<span style="float:right; padding-right: 30px">
+										<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
+										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+										<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
+									</span>
 								</article>
 							</section>
 						</li>
@@ -103,7 +94,12 @@
 								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
-									<p><%= recipe.desc %></p>
+									<span style="float:right; padding-right: 30px">
+										<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
+										<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+										<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
+									</span>
+
 								</article>
 							</section>
 						</li>

@@ -26,115 +26,100 @@
 
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
-<body>
-	<% if current_user and current_user.admin? %>
-		<p style="margin-top:100px">Administrator Mode</p>
-		<h4>Populate Database: </h4>
-		<%= form_tag(populate_db_recipes_path, method: :get, id: "populate-field-admin") do %>
-			<%= text_field_tag :requested_query %>
-			<% submit_tag "Populate Database" %>
-		<% end %>
-		<input type="submit" value="Populate" form="populate-field-admin">
-		<br>
-		<%= link_to "All Users", users_path %>
-	<% end %>
+<body style="background-color: #ffffff">
 	<%= render "shared/nav-bar" %>
 	<!-- header -->
 	<!-- main -->
-	<main role="main-home-wrapper" class="container">
+	<main role="main-home-wrapper" class="container" style="margin-top: 125px">
+		
+		<!-- Left Row -->
+		<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" style="background-color: #ffffff">
+			<ul class="grid-lod effect-2" id="grid">
+				<li>
+					<figure style="background-color: #e84d49">
+						<%=image_tag("logo-main-landing.png", style: "opacity: 1;background-color: #ffffff; margin-top:-40px") %>
+						<h2 style="margin: 20px">
 
-		<div class="row">
-
-			<!--<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-				<article role="pge-title-content">
-					<h2><span>Here's some new flavours for you to try:</span>
-					<header>
-						<h2><span>Here's some new flavours for you to try:</span>
-						
-							<h3>
-								<% if current_user %> 
-								Welcome back, <%= current_user.name %>! Here are some new flavours for you to try:
-								<% else %>
-								<%= link_to "Log in", login_path %> or check out our new recipes:
-								<% end %>
-							</h3> 
-						</h2>
-						</header>
-					</article>
-				</section>-->
-				<section class="col-xs-12 grid long" style="margin-top: 85px;  margin-bottom: 20px">	
-					<figcaption>
-						<h2>
 							<% if current_user %> 
-							Welcome back, <span><%= current_user.name %></span>!
+							<span>Welcome back, <%= current_user.name %></span>!
 							<% else %>
-							<span><%= link_to "Log in", login_path %> or <%= link_to "sign up", signup_path %> for more features!</span>
-							
-							<% end %></h2>
-							<h3>Check out these new flavours, just for you:</h3>
-							<%= link_to "", current_user ? user_path(current_user) : signup_path %>
+							<%= link_to "<span>Log in</span>".html_safe, login_path, style: "color: inherit; text-decoration: inherit; display: inline" %> or <%= link_to "<span>sign up</span>".html_safe, signup_path, style: "color: inherit; text-decoration: inherit; display: inline" %> for more!
+							<% end %>
+						</h2>
+
+					</figure>
+				</li>
+				<li>
+					<figure style="background-color: #e84d49; margin-left: 40px; margin-top: -5%">
+						<h2 style="margin: 20px; font-size: 2rem; letter-spacing: 1.2px">Check out these new flavours, just for you:</h2>
+					</figure>
+				</li>
+
+				<% @recipes[0..4].each do |recipe| %>
+				<li>
+					<figure class="effect-oscar">
+						<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+						<%=image_tag(food_img, class: 'img-responsive', style: "opacity: 0.75") %>
+						<figcaption>
+							<h2 style="margin: 0px"><span><%= recipe.name %></span></h2>
+							<p style="margin-top: 10px">
+								<%= recipe.desc %><br><br>
+								<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
+								<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+								<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
+							</p>
+							<%= link_to recipe.name, recipe_path(recipe) %>
 						</figcaption>
-					</section> 
-					<div class="clearfix"></div>
+					</figure>
+				</li>
+				<% end %>
+			</ul>
+		</section>
 
-					<!-- Left Row -->
-					<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-						<ul class="grid-lod effect-2" id="grid">
-							<% @recipes[0..4].each do |recipe| %>
-							<li>
-								<figure class="effect-oscar">
-									<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
-									<%=image_tag(food_img, class: 'img-responsive') %>
-									<figcaption>
-										<h2><span><%= recipe.name %></span> (NEW!)</h2>
-										<p><%= recipe.desc %></p>
-										<%= link_to recipe.name, recipe_path(recipe) %>
-									</figcaption>
-								</figure>
-							</li>
-							<% end %>
-						</ul>
-					</section>
-
-					<!-- Right Row -->
-					<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-						<ul class="grid-lod effect-2" id="grid">
-							<% @recipes[5..9].each do |recipe| %>
-							<li>
-								<figure class="effect-oscar">
-									<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
-									<%=image_tag(food_img, class: 'img-responsive') %>					
-									<figcaption>
-										<h2><span><%= recipe.name %></span> (NEW!)</h2>
-										<p><%= recipe.desc %></p>
-										<%= link_to recipe.name, recipe_path(recipe) %>
-									</figcaption>
-								</figure>
-							</li>
-							<% end %>
-						</ul>
-					</section>
-					<div class="clearfix"></div>
-				</div>
-			</main>
-			<!-- main -->
-			<!-- footer -->
-			<%= render "shared/footer" %>
-			<!-- footer -->
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<%= javascript_include_tag "js/jquery.min.js"  %>
-			<%= javascript_include_tag "js/nav.js"  %>
-			<%= javascript_include_tag "js/custom.js"  %>
-			<%= javascript_include_tag "js/bootstrap.min.js"  %>
-			<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
-			<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
-			<%= javascript_include_tag "js/effects/classie.js"  %>
-			<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
-			<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
-			<%= javascript_include_tag "js/html5shiv.js"  %>
-			<%= javascript_include_tag "user-js/jquery.min.js"  %>
-			<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
-			<%= javascript_include_tag "user-js/script.js"  %>
-			<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
-		</body>
-		</html>
+		<!-- Right Row -->
+		<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" style="background-color: #ffffff">
+			<ul class="grid-lod effect-2" id="grid">
+				<% @recipes[5..9].each do |recipe| %>
+				<li>
+					<figure class="effect-oscar">
+						<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+						<%=image_tag(food_img, class: 'img-responsive', style: "opacity: 0.75") %>
+						<figcaption>
+							<h2 style="margin: 0px"><span><%= recipe.name %></span></h2>
+							<p style="margin-top: 10px">
+								<%= recipe.desc %><br><br>
+								<i class="fas fa-fire"></i> <%= recipe.calories %>&nbsp;&nbsp;
+								<i class="fas fa-utensils"></i> <%= recipe.servings %>  &nbsp;&nbsp;
+								<i class="fas fa-clock"></i></i> <%= recipe.cooktime %>
+							</p>
+							<%= link_to recipe.name, recipe_path(recipe) %>
+						</figcaption>
+					</figure>
+				</li>
+				<% end %>
+			</ul>
+		</section>
+		<div class="clearfix"></div>
+	</div>
+</main>
+<!-- main -->
+<!-- footer -->
+<%= render "shared/footer" %>
+<!-- footer -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<%= javascript_include_tag "js/jquery.min.js"  %>
+<%= javascript_include_tag "js/nav.js"  %>
+<%= javascript_include_tag "js/custom.js"  %>
+<%= javascript_include_tag "js/bootstrap.min.js"  %>
+<%= javascript_include_tag "js/effects/masonry.pkgd.min.js"  %>
+<%= javascript_include_tag "js/effects/imagesloaded.js"  %>
+<%= javascript_include_tag "js/effects/classie.js"  %>
+<%= javascript_include_tag "js/effects/AnimOnScroll.js"  %>
+<%= javascript_include_tag "js/effects/modernizr.custom.js"  %>
+<%= javascript_include_tag "js/html5shiv.js"  %>
+<%= javascript_include_tag "user-js/jquery.min.js"  %>
+<%= javascript_include_tag "user-js/bootstrap.min.js"  %>
+<%= javascript_include_tag "user-js/script.js"  %>
+<%= javascript_include_tag "user-js/dropdown-script.min.js"  %>
+</body>
+</html>
