@@ -39,29 +39,31 @@
 							%>
 							<span style="font-size:0.7em; color: #fb5353"><%= @recipe.users.size.to_s %></span>
 						</h2>
-						<div style="float:left;padding-right:10%;min-width: 200px">
-							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
-								<%= @recipe.calories %>
-							</h3>
-							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
-								Calories
-							</h4>
-						</div>
-						<div style="padding-right:10%;min-width: 100px">
-							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
-								<%= @recipe.servings %>
-							</h3>
-							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
-								Servings
-							</h4>
-						</div>
-						<div style="padding-right:10%;min-width: 100px">
-							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
-								<%= @recipe.cooktime %>
-							</h3>
-							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
-								Cook Time
-							</h4>
+						<div style="display:table">
+							<div style="display: table-cell; min-width: 100px">
+								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+									<%= @recipe.calories %>
+								</h3>
+								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+									Calories
+								</h4>
+							</div>
+							<div style="display: table-cell; min-width: 100px">
+								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+									<%= @recipe.servings %>
+								</h3>
+								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+									Servings
+								</h4>
+							</div>
+							<div style="display: table-cell; min-width: 100px">
+								<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+									<%= @recipe.cooktime %>
+								</h3>
+								<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+									Minutes to Make
+								</h4>
+							</div>
 						</div>
 						<div class="mbr-section-text">
 							<% if @recipe.ingredients %>
@@ -86,11 +88,11 @@
 								<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="margin-top:10px">
 									Directions
 								</h4>
-									<ol>
-										<% @recipe.directions.each do |dir| %>
-											<li style="margin-left: 15px"><%= link_to dir, search_for_deals_recipes_path(item:ingr) %></li>
-										<% end %> 
-									</ol>
+								<ol>
+									<% @recipe.directions.each do |dir| %>
+										<li style="margin-left: 15px"><%= dir %></li>
+									<% end %> 
+								</ol>
 							<% end %>
 							<p class="mbr-text mb-5 pt-1 mbr-light mbr-fonts-style display-5">
 								<%= @recipe.desc %>
