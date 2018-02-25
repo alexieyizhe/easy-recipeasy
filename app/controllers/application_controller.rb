@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
 	end
 
 	def require_admin
-		redirect_to '/recipes' unless current_user.admin?
+		if current_user
+			redirect_to '/recipes' unless current_user.admin?
+		else
+			redirect_to '/recipes' 
+		end
 	end
 	
 end

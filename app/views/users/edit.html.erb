@@ -6,9 +6,11 @@
 		<%= f.text_field :name, :placeholder => @user.name %> <br>
 		<a href="https://en.gravatar.com/" target="_blank"><%= image_tag @user.gravatar_url %></a>
 		<%= f.text_field :bio, :placeholder => @user.bio %> <br><br>
+		<%= f.text_field :role, :placeholder => "Role" %> <br><br>
 
 		<%= f.email_field :email, :placeholder => @user.email %> <br>
 		<%= f.password_field :password, :placeholder => "New Password" %> <br>
+
 	</div> 
 
 	<div class="actions"> 
