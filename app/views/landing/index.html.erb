@@ -83,9 +83,8 @@
 							<% @recipes[0..4].each do |recipe| %>
 							<li>
 								<figure class="effect-oscar">
-									<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
-									<!--<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %> -->
-									<!--<%=image_tag(food_img, class: 'img-responsive') %>-->
+									<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+									<%=image_tag(food_img, class: 'img-responsive') %>
 									<figcaption>
 										<h2><span><%= recipe.name %></span> (NEW!)</h2>
 										<p><%= recipe.desc %></p>
@@ -103,7 +102,8 @@
 							<% @recipes[5..9].each do |recipe| %>
 							<li>
 								<figure class="effect-oscar">
-									<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
+									<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+									<%=image_tag(food_img, class: 'img-responsive') %>					
 									<figcaption>
 										<h2><span><%= recipe.name %></span> (NEW!)</h2>
 										<p><%= recipe.desc %></p>

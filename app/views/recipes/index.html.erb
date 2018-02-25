@@ -78,7 +78,8 @@
 					<% @recipes[0..(@recipes.size / 2)].each do |recipe| %>
 						<li>
 							<section class="blog-content">
-								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag("home-images/image-steak.jpg", class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
+								<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
 									<p><%= recipe.desc %></p>
@@ -98,7 +99,8 @@
 					<% @recipes[(@recipes.size / 2 + 1)...(@recipes.size)].each do |recipe| %>
 						<li>
 							<section class="blog-content">
-								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag("home-images/image-steak.jpg", class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
+								<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
 									<p><%= recipe.desc %></p>

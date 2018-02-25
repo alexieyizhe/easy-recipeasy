@@ -55,15 +55,25 @@
 								Servings
 							</h4>
 						</div>
-						<div class="mbr-section-text">
-							<h4 class="mbr-title pt-4 mbr-fonts-style display-5">
-								Ingredients
+						<div style="padding-right:10%;min-width: 100px">
+							<h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+								<%= @recipe.cooktime %>
+							</h3>
+							<h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
+								Cook Time
 							</h4>
-							<ul>
-								<% @recipe.ingredients.each do |ingr| %>
-									<li style="margin-left: 15px"><%= link_to ingr, search_for_deals_recipes_path(item:ingr) %></li>
-								<% end %> 
-							</ul>
+						</div>
+						<div class="mbr-section-text">
+							<% if @recipe.ingredients %>
+								<h4 class="mbr-title pt-4 mbr-fonts-style display-5">
+									Ingredients
+								</h4>
+								<ul>
+									<% @recipe.ingredients.each do |ingr| %>
+										<li style="margin-left: 15px"><%= link_to ingr.capitalize, search_for_deals_recipes_path(item:ingr) %></li>
+									<% end %> 
+								</ul>
+							<% end %>
 							<% if @recipe.categories %>
 								<h4 class="mbr-title pt-0 mbr-fonts-style display-5">
 									Categories
@@ -72,13 +82,16 @@
 									<span><%= cat %>, </span>
 								<% end %>
 							<% end %>
-							<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="margin-top:10px">
-								Directions
-							</h4>
-							<ol>
-								<li style="margin-left: 15px">Test</li>
-								<li style="margin-left: 15px">Test</li>
-							</ol>
+							<% if @recipe.directions %>
+								<h4 class="mbr-title pt-0 mbr-fonts-style display-5" style="margin-top:10px">
+									Directions
+								</h4>
+									<ol>
+										<% @recipe.directions.each do |dir| %>
+											<li style="margin-left: 15px"><%= link_to dir, search_for_deals_recipes_path(item:ingr) %></li>
+										<% end %> 
+									</ol>
+							<% end %>
 							<p class="mbr-text mb-5 pt-1 mbr-light mbr-fonts-style display-5">
 								<%= @recipe.desc %>
 							</p>
