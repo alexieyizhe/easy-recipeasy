@@ -28,15 +28,21 @@
 <body style="background-color: #ffffff">
 	<!-- main -->
 	<main role="main-inner-wrapper" class="container">
-		<h1>ALL RECIPES</h1>
-		
+		<% if @recipes.size > 0 %>
+			<h2 style="margin-top: 100px" > We found the following recipes matching '<%= @query %>'!</h2>
+		<% else %>
+			<h2 style="margin-top: 100px" > We couldn't find any recipes matching '<%= @query %>'!</h2>
+		<% end %>
+
+		<div class="contat-from-wrapper" style="margin-top: 75px">
+			<%= form_tag(search_for_recipes_recipes_path, method: :get, id: "search-db-field") do %>
+			<%= text_field_tag :search_param, nil, placeholder: "Find Another Recipe", style: "margin-left:-7%; max-width:80%; float:left" %>
+			<%= submit_tag "Search", style: "margin-right:-69px; margin-top:-40px; margin-bottom:20px" %>
+			<% end %>
+		</div>
+
 		<div class="row">
-
 			<% if @recipes.size > 0 %>
-				<section class="col-xs-12 grid long" style="margin-top: 30px;  margin-bottom: 20px; background-color: #ffffff">	
-					<h2> We found these tasty recipes matching '<%= @query %>'!</h2>
-				</section> 
-
 				<div class="clearfix"></div>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 					<ul class="grid-lod effect-2" id="grid">
@@ -70,10 +76,6 @@
 						</ul>
 					</div>
 				<% end %>
-			<% else %>
-				<section class="col-xs-12 grid long" style="margin-top: 30px;  margin-bottom: 20px; background-color: #ffffff">	
-					<h2 > We couldn't find any recipes matching '<%= @query %>'!</h2>
-				</section> 
 			<% end %>
 		</div>
 

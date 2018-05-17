@@ -1,0 +1,5 @@
+app/assets/stylesheets/css/* linguist-vendored
+app/assets/javascripts/js/* linguist-vendored
+app/assets/javascripts/recipe-js/* linguist-vendored
+
+public/assets/* linguist-vendored

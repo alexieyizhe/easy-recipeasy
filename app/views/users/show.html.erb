@@ -12,7 +12,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 </head>
-<body>
+<body style="color: #e84d49">
 	<% if current_user and current_user.admin? %>
 		<p style="margin-top:100px">Administrator Mode</p>
 		<h4>Populate Database: </h4>
@@ -25,21 +25,16 @@
 		<%= link_to "All Users", users_path %>
 	<% end %>
 	<section class="engine"><a href="#""></a></section><section class="carousel slide testimonials-slider cid-qKy4q5kW1B" id="testimonials-slider1-i">
-
-
-
-
-
 		<div class="container text-center">
-			<h2 class="pb-5 mbr-fonts-style display-2" style="padding-top:20px">
+			<h2 class="pb-5 mbr-fonts-style display-2" style="padding-top:40px">
 				Your Profile
 			</h2>
-			<div class="user col-md-8" style="width:100%; margin-left: auto; margin-right: auto">
+			<div class="user col-md-8" style="padding-left: 35%">
 				<div class="user_image">
 					<%= image_tag @user.gravatar_url %>
 				</div>
 				<div class="user_text pb-3">
-					<h2>
+					<h2 style="font-size: 3rem">
 						<%= @user.name %>
 						<%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_user_path(@user) %>
 						<%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, logout_path, method: :delete%> <br>
@@ -50,18 +45,18 @@
 				</div>
 				<div style="margin-bottom: 20px">
 					<div style="float:left">
-						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
+						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-5">
 							Role:
 						</div>
-						<div class="user_desk mbr-light mbr-fonts-style display-7">
+						<div class="user_desk mbr-light mbr-fonts-style display-5">
 							<%= @user.role.to_s.capitalize %>
 						</div>
 					</div>
 					<div style="float:right">
-						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
+						<div class="user_name mbr-bold pb-2 mbr-fonts-style display-5">
 							User since:
 						</div>
-						<div class="user_desk mbr-light mbr-fonts-style display-7">
+						<div class="user_desk mbr-light mbr-fonts-style display-5">
 							<%= @user.created_at %>
 						</div>
 					</div>
@@ -71,14 +66,15 @@
 	</section>
 
 	<section class="features17 cid-qKy4yyWHqe" id="features17-k">
-		<h1 style="padding-left:2%">Favourites</h1>
+		<h1 style="padding-left:75px">Favourites</h1>
 		<div class="container-fluid">
 			<div class="media-container-row">
 				<% @user.recipes.each do |recipe| %>
 				<div class="card p-3 col-12 col-md-6 col-lg-2">
 					<div class="card-wrapper">
 						<div class="card-img">
-							<%=image_tag("home-images/image-steak.jpg", class: 'img-responsive') %>
+							<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
+							<%=image_tag(food_img, class: 'img-responsive') %>
 						</div>
 						<div class="card-box">
 							<h4 class="card-title pb-3 mbr-fonts-style display-7">
@@ -93,7 +89,7 @@
 				<% end %>
 			</div>
 		</div>
-		<%= link_to "<< Back to Home", recipes_path %>
+		<%= link_to "<< Back to Home", "/" , style: "margin-left: 75px" %>
 	</section>
 
 

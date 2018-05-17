@@ -1,4 +1,4 @@
-require 'recipe_api'
+
 
 class RecipesController < ApplicationController
 	before_action :require_admin, only: [:edit, :destroy]
@@ -34,12 +34,13 @@ class RecipesController < ApplicationController
 	end
 
 	def search_for_deals
-		puts "egohwoqhoghoHOhgoHGOIEWhoghoHEIGhogehwhGO"
-		
-		Selenium::WebDriver::Chrome.driver_path = "/Users/alexxie/Documents/GitHub/easy-recipeasy/bin/chromedriver"
-
 		options = Selenium::WebDriver::Chrome::Options.new
-		options.add_argument('--headless')
+		chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+		unless chrome_bin
+			Selenium::WebDriver::Chrome.driver_path = "/Users/alexxie/Documents/GitHub/easy-recipeasy/bin/chromedriver"
+			options.add_argument('--headless')
+		end
+		options.binary = chrome_bin if chrome_bin
 		driver = Selenium::WebDriver.for :chrome, options: options
 		search_url = "https://www.flipp.com/search?q=#{params[:item]}"
 		driver.navigate.to search_url
@@ -50,8 +51,6 @@ class RecipesController < ApplicationController
 		@img_links = []
 
 		parse_page.css(".item-container").each do |finding|
-			puts "https://www.flipp.com" + finding.css("a").attr("href").to_s
-			puts finding.css(".clipping").attr("src")
 			@img_links << [finding.css("a").attr("href").to_s.split("?")[0][15..-1], ("https://www.flipp.com" + finding.css("a").attr("href").to_s), (finding.css(".clipping").attr("src"))]
 		end
 	end

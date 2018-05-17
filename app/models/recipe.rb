@@ -10,7 +10,7 @@ class Recipe < ApplicationRecord
 		if search
 			where(['name LIKE ?', "%#{search}%"])
 		else
-			find(:all)
+			where(['name LIKE ?', ""])
 		end
 	end
 
