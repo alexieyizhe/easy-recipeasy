@@ -62,7 +62,7 @@
 					</figure>
 				</li>
 
-				<% @recipes[0..4].each do |recipe| %>
+				<% @recipes[0..4]&.each do |recipe| %>
 				<li>
 					<figure class="effect-oscar">
 						<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
@@ -86,7 +86,7 @@
 		<!-- Right Row -->
 		<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" style="background-color: #ffffff">
 			<ul class="grid-lod effect-2" id="grid">
-				<% @recipes[5..9].each do |recipe| %>
+				<% @recipes[5..9]&.each do |recipe| %>
 				<li>
 					<figure class="effect-oscar">
 						<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>

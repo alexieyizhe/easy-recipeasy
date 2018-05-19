@@ -11,6 +11,7 @@ gem 'chromedriver-helper'
 gem 'httparty'
 gem 'nokogiri'
 gem 'gravtastic'
+gem 'figaro'
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 # Adds support for Capybara system testing and selenium driver
 gem 'capybara', '~> 2.13'

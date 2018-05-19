@@ -48,7 +48,7 @@
 						<li>
 							<section class="blog-content">
 								<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
-								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
+								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> ' + "Likes".pluralize(recipe.users.size) + '</div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
 									<span style="float:right; padding-right: 30px">
@@ -73,7 +73,7 @@
 						<li>
 							<section class="blog-content">
 								<% food_img = recipe.img_url ? recipe.img_url : "home-images/image-steak.jpg" %>
-								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> Likes </div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
+								<%= link_to ('<figure><div class="post-date"><span>' + recipe.users.size.to_s + '</span> ' + "Likes".pluralize(recipe.users.size) + '</div>' + (image_tag(food_img, class: 'img-responsive')) + '</figure>').html_safe, recipe_path(recipe) %>
 								<article>
 									<span><%= recipe.name.upcase! %></span>
 									<span style="float:right; padding-right: 30px">
