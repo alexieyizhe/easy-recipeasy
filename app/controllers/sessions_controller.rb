@@ -1,6 +1,6 @@
 # frozen-string-literal: true
 
-# The Sessions Controller is part of the MVC framework for sessions
+# The Sessions controller is part of the MVC framework for sessions
 class SessionsController < ApplicationController
   def new; end
 
